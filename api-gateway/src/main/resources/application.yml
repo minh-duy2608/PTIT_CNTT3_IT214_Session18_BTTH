@@ -1,0 +1,7 @@
+# Câu 1 + Câu 5: file local chỉ giữ tên service và URL Config Server.
+# Toàn bộ cấu hình còn lại (port, routes, eureka, kafka...) lấy từ config-repo/api-gateway.yml
+spring:
+  application:
+    name: api-gateway
+  config:
+    import: "configserver:http://localhost:8888"

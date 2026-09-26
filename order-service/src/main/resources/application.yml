@@ -1,0 +1,7 @@
+# Câu 1 + Câu 5: file local chỉ giữ tên service và URL Config Server.
+# Cấu hình chi tiết (port, datasource, kafka, resilience4j...) lấy từ config-repo/order-service.yml
+spring:
+  application:
+    name: order-service
+  config:
+    import: "configserver:http://localhost:8888"

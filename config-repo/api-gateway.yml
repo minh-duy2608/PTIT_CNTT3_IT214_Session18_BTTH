@@ -1,0 +1,27 @@
+# Cấu hình riêng cho api-gateway (nạp từ Config Server: http://localhost:8888/api-gateway/default)
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      # Câu 1: cổng vào duy nhất cho toàn hệ thống.
+      # Dùng lb://<service-name> để Gateway hỏi Eureka + LoadBalancer chọn instance.
+      routes:
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/api/order/**
+        - id: inventory-service
+          uri: lb://inventory-service
+          predicates:
+            - Path=/api/inventory/**
+        - id: payment-service
+          uri: lb://payment-service
+          predicates:
+            - Path=/api/payment/**
+      # Cho phép gọi theo tên service qua discovery (tuỳ chọn)
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true

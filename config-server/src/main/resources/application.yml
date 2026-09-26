@@ -1,0 +1,17 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  # Câu 1: dùng profile "native" để đọc cấu hình từ thư mục config-repo của project
+  # (có thể đổi sang git bằng spring.cloud.config.server.git.uri)
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations:
+            - file:./config-repo
+            - file:../config-repo

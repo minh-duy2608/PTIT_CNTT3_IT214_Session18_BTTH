@@ -1,0 +1,7 @@
+# Câu 1 + Câu 5: file local chỉ giữ tên service và URL Config Server.
+# Cấu hình chi tiết (port, datasource, kafka, redis, cache...) lấy từ config-repo/inventory-service.yml
+spring:
+  application:
+    name: inventory-service
+  config:
+    import: "configserver:http://localhost:8888"

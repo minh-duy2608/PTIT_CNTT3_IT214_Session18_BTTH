@@ -1,0 +1,7 @@
+# Câu 1 + Câu 5: file local chỉ giữ tên service và URL Config Server.
+# Cấu hình chi tiết (port, datasource, kafka, payment.*) lấy từ config-repo/payment-service.yml
+spring:
+  application:
+    name: payment-service
+  config:
+    import: "configserver:http://localhost:8888"
